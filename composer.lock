@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4a25e8c4b0eb4f1eb4d2a98bfbba548",
+    "content-hash": "f7c10437b40eff7612a688cabdc92d58",
     "packages": [
         {
             "name": "consolidation/annotated-command",
@@ -234,16 +234,16 @@
         },
         {
             "name": "consolidation/robo",
-            "version": "3.0.3",
+            "version": "3.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/consolidation/Robo.git",
-                "reference": "734620ad3f9bb457fda1a52338b42439115cf941"
+                "url": "https://github.com/egorzot/Robo.git",
+                "reference": "c925d29eb7d906101797879dc3cbc2b55fe953f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/Robo/zipball/734620ad3f9bb457fda1a52338b42439115cf941",
-                "reference": "734620ad3f9bb457fda1a52338b42439115cf941",
+                "url": "https://api.github.com/repos/egorzot/Robo/zipball/c925d29eb7d906101797879dc3cbc2b55fe953f1",
+                "reference": "c925d29eb7d906101797879dc3cbc2b55fe953f1",
                 "shasum": ""
             },
             "require": {
@@ -278,6 +278,7 @@
                 "pear/archive_tar": "Allows tar archives to be created and extracted in taskPack and taskExtract, respectively.",
                 "totten/lurkerlite": "For monitoring filesystem changes in taskWatch"
             },
+            "default-branch": true,
             "bin": [
                 "robo"
             ],
@@ -314,7 +315,28 @@
                     "Robo\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Robo\\": "tests/src",
+                    "RoboExample\\": "examples/src"
+                }
+            },
+            "scripts": {
+                "cs": [
+                    "./robo sniff"
+                ],
+                "unit": [
+                    "phpunit"
+                ],
+                "lint": [
+                    "find src tests/src -name '*.php' -print0 | xargs -0 -n1 -P4 -- php -l"
+                ],
+                "test": [
+                    "@lint",
+                    "@unit",
+                    "@cs"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -326,10 +348,9 @@
             ],
             "description": "Modern task runner",
             "support": {
-                "issues": "https://github.com/consolidation/Robo/issues",
-                "source": "https://github.com/consolidation/Robo/tree/3.0.3"
+                "source": "https://github.com/egorzot/Robo/tree/3.x"
             },
-            "time": "2021-02-21T19:19:43+00:00"
+            "time": "2021-04-18T23:46:49+00:00"
         },
         {
             "name": "consolidation/self-update",
@@ -4355,7 +4376,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "consolidation/robo": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
